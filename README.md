@@ -260,6 +260,40 @@ function App() {
 }
 ```
 
+#### NavLink (style)
+
+- StyledNavbar.js
+
+```js
+import { NavLink } from 'react-router-dom';
+
+<nav className='navbar'>
+  <NavLink
+    to='/about'
+    style={({ isActive }) => {
+      return { color: isActive ? 'red' : 'grey' };
+    }}
+  >
+    Home
+  </NavLink>
+</nav>;
+```
+
+#### NavLink (className)
+
+- StyledNavbar.js
+
+```js
+<nav className='navbar'>
+  <NavLink
+    to='/'
+    className={({ isActive }) => (isActive ? 'link active' : 'link')}
+  >
+    Home
+  </NavLink>
+</nav>
+```
+
 #### Reading URL Params
 
 - App.js

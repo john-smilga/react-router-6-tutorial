@@ -274,7 +274,11 @@ ul {
   gap: 1rem;
 }
 
-.navbar a {
+.link {
+  color: var(--grey-500);
+}
+
+.active {
   color: var(--primary-500);
 }
 .products article {
