@@ -8,6 +8,15 @@
 
 Find the App Useful? [You can always buy me a coffee](https://www.buymeacoffee.com/johnsmilga)
 
+#### Run Complete Project
+
+- index.js
+
+```js
+// import App from './App';
+import App from './final/App';
+```
+
 #### Docs
 
 [React Router Docs](https://reactrouter.com/docs/en/v6/getting-started/overview)
@@ -18,7 +27,7 @@ Find the App Useful? [You can always buy me a coffee](https://www.buymeacoffee.c
 npm install react-router-dom@6
 ```
 
-#### Initial Setup
+#### First Pages
 
 - App.js
 
@@ -46,7 +55,7 @@ function App() {
 export default App;
 ```
 
-#### First Pages
+#### Components
 
 - App.js
 
@@ -85,6 +94,7 @@ const Home = () => {
       <Link to='/about' className='btn'>
         About
       </Link>
+      <a href="">
     </div>
   );
 };
@@ -127,7 +137,7 @@ const Error = () => {
 export default Error;
 ```
 
-#### Nested Pages and Shared Layout
+#### Nested Pages
 
 - will refactor few times
 
@@ -149,10 +159,12 @@ function App() {
 }
 ```
 
+#### Shared Layout
+
 - Home.js
 
 ```js
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'reract-router-dom';
 
 const Home = () => {
   return (
@@ -316,6 +328,27 @@ function App() {
 }
 ```
 
+#### Single Product
+
+- SingleProduct.js
+
+```js
+import { Link, useParams } from 'react-router-dom';
+import products from '../data';
+const SingleProduct = () => {
+  const { productId } = useParams();
+
+  return (
+    <section className='section product'>
+      <h2>{productId}</h2>
+      <Link to='/products'>back to products</Link>
+    </section>
+  );
+};
+
+export default SingleProduct;
+```
+
 #### Products Page
 
 - Products.js
@@ -366,4 +399,93 @@ const SingleProduct = () => {
 };
 
 export default SingleProduct;
+```
+
+#### useNavigate()
+
+- App.js
+
+```js
+function App() {
+  const [user, setUser] = useState(null);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path='about' element={<About />} />
+          <Route path='products' element={<Products />} />
+          <Route path='products/:productId' element={<SingleProduct />} />
+          <Route path='login' element={<Login setUser={setUser} />} />
+          <Route path='dashboard' element={<Dashboard user={user} />} />
+          <Route path='*' element={<Error />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+- Login.js
+
+```js
+ import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+const Login = ({ setUser }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !email) return;
+    setUser({ name: name, email: email });
+    navigate('/dashboard');
+  };
+
+```
+
+- Dashboard.js
+
+```js
+const Dashboard = ({ user }) => {
+  return (
+    <section className='section'>
+      <h4>Hello, {user?.name}</h4>
+    </section>
+  );
+};
+export default Dashboard;
+```
+
+#### Protected Route
+
+- App.js
+
+```js
+<Route
+  path='dashboard'
+  element={
+    <ProtectedRoute user={user}>
+      <Dashboard user={user} />
+    </ProtectedRoute>
+  }
+/>
+```
+
+- ProtectedRoute.js
+
+```js
+import { Navigate } from 'react-router-dom';
+
+const ProtectedRoute = ({ children, user }) => {
+  if (!user) {
+    return <Navigate to='/' />;
+  }
+  return children;
+};
+
+export default ProtectedRoute;
 ```
