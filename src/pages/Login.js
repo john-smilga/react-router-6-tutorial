@@ -8,7 +8,7 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <section className='section'>
       <form className='form' onSubmit={handleSubmit}>
         <h5>login</h5>
         <div className='form-row'>

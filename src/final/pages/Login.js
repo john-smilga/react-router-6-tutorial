@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 const Login = ({ setUser }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email) return;
@@ -12,7 +14,7 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <section>
+    <section className='section'>
       <form className='form' onSubmit={handleSubmit}>
         <h5>login</h5>
         <div className='form-row'>
