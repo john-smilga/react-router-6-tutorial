@@ -164,7 +164,7 @@ function App() {
 - Home.js
 
 ```js
-import { Link, Outlet } from 'reract-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Home = () => {
   return (
