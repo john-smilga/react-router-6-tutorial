@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import React from 'react';
 import { useState } from 'react';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 
 function App() {
@@ -37,7 +38,16 @@ function App() {
           {/* Login */}
           <Route path='login' element={<Login setUser={setUser} />} />
           {/* Dashboard (after login) */}
-          <Route path='dashboard' element={<Dashboard user={user} />} />
+          {/* Protected Route to protect Dashboard from being connected directly without the login process */}
+          <Route
+            path='dashboard'
+            element={
+              <ProtectedRoute user={user}>
+                <Dashboard user={user} />
+              </ProtectedRoute>
+            }>
+          </Route>
+
           {/* What if user type in some link not match our wanted path ? we use as below to handle*/}
           {/* We should set up an Error page and use path to * to display that error page */}
           <Route path='*' element={<Error />} />
