@@ -32,11 +32,14 @@ function App() {
         <Route path='/' element={<SharedLayout />} >
           <Route index element={<Home />} />
           <Route path='about' element={<About />} />
+
           <Route path='products' element={<Products />} />
           {/* We can also use nested routes here for /products to render base on products id child, but for now we do like this and in the SingleProduct we will useParams to display which product we want */}
+          
           <Route path='products/:productId' element={<SingleProduct />} />
           {/* Login */}
           <Route path='login' element={<Login setUser={setUser} />} />
+
           {/* Dashboard (after login) */}
           {/* Protected Route to protect Dashboard from being connected directly without the login process */}
           <Route

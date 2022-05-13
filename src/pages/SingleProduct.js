@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import products from "../data";
 
 const SingleProduct = () => {
@@ -8,6 +8,12 @@ const SingleProduct = () => {
 
   //Base on the productId we got from the url, use that id to find the related product in data
   const product = products.find(product => productId === product.id);
+  // If the product doesn't exist in data, Navigate user back.
+  //This also for cases that user type random product id in the url
+  if (!product) {
+    return <Navigate to='*' />
+  }
+  //if the product exist then
   //extract the image and name property of the product object
   const { name, image } = product;
 
