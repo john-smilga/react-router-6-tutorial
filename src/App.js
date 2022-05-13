@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import React from 'react';
 import { useState } from 'react';
 import ProtectedRoute from './pages/ProtectedRoute';
+import SharedProductsLayout from './pages/SharedProductsLayout';
 
 
 function App() {
@@ -32,11 +33,14 @@ function App() {
         <Route path='/' element={<SharedLayout />} >
           <Route index element={<Home />} />
           <Route path='about' element={<About />} />
+          {/* Products */}
 
-          <Route path='products' element={<Products />} />
-          {/* We can also use nested routes here for /products to render base on products id child, but for now we do like this and in the SingleProduct we will useParams to display which product we want */}
-          
-          <Route path='products/:productId' element={<SingleProduct />} />
+          <Route path='products' element={<SharedProductsLayout />}>
+            <Route index element={<Products />} />
+            {/* We can also use nested routes here for /products to render base on products id child, but for now we do like this and in the SingleProduct we will useParams to display which product we want */}
+            <Route path=':productId' element={<SingleProduct />} />
+          </Route>
+
           {/* Login */}
           <Route path='login' element={<Login setUser={setUser} />} />
 
