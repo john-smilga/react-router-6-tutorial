@@ -1,7 +1,7 @@
-const Dashboard = () => {
+const Dashboard = ({user}) => {
   return (
     <section className='section'>
-      <h4>Dashboard</h4>
+      <h4>{`Welcome, ${user.name}`}</h4>
     </section>
   );
 };

@@ -37,7 +37,7 @@ function App() {
           {/* Login */}
           <Route path='login' element={<Login setUser={setUser} />} />
           {/* Dashboard (after login) */}
-          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='dashboard' element={<Dashboard user={user} />} />
           {/* What if user type in some link not match our wanted path ? we use as below to handle*/}
           {/* We should set up an Error page and use path to * to display that error page */}
           <Route path='*' element={<Error />} />
