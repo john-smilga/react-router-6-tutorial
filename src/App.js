@@ -3,12 +3,18 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
 import Error from './pages/Error';
-import React from 'react';
 import SharedLayout from './pages/SharedLayout';
 import SingleProduct from './pages/SingleProduct';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import React from 'react';
+import { useState } from 'react';
 
 
 function App() {
+  // later be used to login
+  const [user, setUser] = useState(null);
+
   return (
     //BrowserRouter to connect to the Browser
     <BrowserRouter>
@@ -26,7 +32,12 @@ function App() {
           <Route index element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='products' element={<Products />} />
-          <Route path='products/:productId' element={<SingleProduct />}/> {/* We can also use nested routes here for /products to render base on products id child, but for now we do like this and in the SingleProduct we will useParams to display which product we want */}
+          {/* We can also use nested routes here for /products to render base on products id child, but for now we do like this and in the SingleProduct we will useParams to display which product we want */}
+          <Route path='products/:productId' element={<SingleProduct />} />
+          {/* Login */}
+          <Route path='login' element={<Login setUser={setUser} />} />
+          {/* Dashboard (after login) */}
+          <Route path='dashboard' element={<Dashboard />} />
           {/* What if user type in some link not match our wanted path ? we use as below to handle*/}
           {/* We should set up an Error page and use path to * to display that error page */}
           <Route path='*' element={<Error />} />

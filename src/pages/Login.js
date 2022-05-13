@@ -1,10 +1,20 @@
 import { useState } from 'react';
-const Login = () => {
+import { useNavigate } from 'react-router-dom';
+const Login = ({ setUser }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  //We will navigate by useNavigate from React Router to navigate user to the dashboard after successful login and submit.
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!name || !email) return; //we can use required in the form also
+    setUser({
+      name: name,
+      email: email
+    });
+    navigate('/dashboard');
   };
 
   return (
