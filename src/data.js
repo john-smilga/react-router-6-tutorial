@@ -3,34 +3,34 @@ const products = [
     id: 'recZkNf2kwmdBcqd0',
     name: 'accent chair',
     image:
-      'https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160',
+      'https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681749482/react-comfy-store-products/iuYyO9RP_o_upinxq.jpg',
   },
   {
     id: 'recEHmzvupvT8ZONH',
     name: 'albany sectional',
 
     image:
-      'https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52',
+      'https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750782/react-comfy-store-products/product-2_lusrzx.jpg',
   },
   {
     id: 'rec5NBwZ5zCD9nfF0',
     name: 'albany table',
 
     image:
-      'https://dl.airtable.com/.attachmentThumbnails/7478483f40a2f56662a87b304bd4e104/707d397f',
+      'https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750874/react-comfy-store-products/product-3_znpiqa.jpg',
   },
   {
     id: 'recd1jIVIEChmiwhe',
     name: 'armchair',
 
     image:
-      'https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f',
+      'https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750929/react-comfy-store-products/product-4_ebl6q1.jpg',
   },
   {
     id: 'recoM2MyHJGHLVi5l',
     name: 'bar stool',
     image:
-      'https://dl.airtable.com/.attachmentThumbnails/a6119fabf7256049cc0e8dbcdf536c9c/b0153f66',
+      'https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681751026/react-comfy-store-products/product-5_n184nu.jpg',
   },
 ];
 
